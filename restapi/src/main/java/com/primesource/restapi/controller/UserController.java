@@ -58,6 +58,17 @@ public class UserController {
 		return ResponseEntity.ok().body(user);
 
 	}
+	
+	@GetMapping("/users/username/{username}")
+	public ResponseEntity<List<User>> getUserByUsername(@PathVariable(value = "username") String username) {
+		List<User> user = userDAO.getByUsername(username);
+
+		if (user == null) {
+			return ResponseEntity.notFound().build();
+		}
+		return ResponseEntity.ok().body(user);
+
+	}
 
 	/* update user info */
 	@PutMapping("/users/{id}")

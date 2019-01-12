@@ -29,6 +29,10 @@ public class UserDAO {
 		return userRepository.findById(id).get();
 		
 	}
+	public List<User> getByUsername(String username) {
+		return userRepository.findByUsernameContainingIgnoreCase(username);
+		
+	}
 	//delete user
 	public void delete(User user) {
 		userRepository.delete(user);
